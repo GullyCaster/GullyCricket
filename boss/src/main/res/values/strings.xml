@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GullyBoss</string>
+    
+    <!-- Connection -->
+    <string name="btn_start_hotspot">Start Hotspot</string>
+    <string name="btn_stop_hotspot">Stop Hotspot</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connected">Connected</string>
+    
+    <!-- Streaming -->
+    <string name="btn_go_live">GO LIVE</string>
+    <string name="btn_stop_live">STOP</string>
+    
+    <!-- Scoring -->
+    <string name="btn_wide">Wide</string>
+    <string name="btn_out">OUT</string>
+</resources>

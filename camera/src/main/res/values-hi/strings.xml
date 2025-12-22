@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 GullyCaster Project
+  ~ Licensed under GPLv3. Developed for the Cricket Community of South Asia.
+  ~ Hindi (हिंदी)
+  -->
+<resources>
+    <!-- App Names -->
+    <string name="app_name">गली कैम</string>
+    <string name="app_name_boss">गली बॉस</string>
+    
+    <!-- Connection -->
+    <string name="btn_connect">अंपायर से जुड़ें</string>
+    <string name="btn_disconnect">डिस्कनेक्ट</string>
+    <string name="btn_start_hotspot">हॉटस्पॉट शुरू करें</string>
+    <string name="btn_stop_hotspot">हॉटस्पॉट बंद करें</string>
+    
+    <!-- Status -->
+    <string name="status_live">लाइव</string>
+    <string name="status_connecting">कनेक्ट हो रहा है…</string>
+    <string name="status_connected">कनेक्टेड</string>
+    <string name="status_disconnected">डिस्कनेक्टेड</string>
+    <string name="status_streaming">स्ट्रीमिंग</string>
+    
+    <!-- Scoring -->
+    <string name="score_runs">रन</string>
+    <string name="score_wickets">विकेट</string>
+    <string name="score_overs">ओवर</string>
+    <string name="btn_wide">वाइड</string>
+    <string name="btn_out">आउट</string>
+    <string name="btn_no_ball">नो बॉल</string>
+    <string name="btn_undo">पूर्ववत</string>
+    
+    <!-- Modes -->
+    <string name="mode_eco">बैटरी सेवर</string>
+    <string name="mode_eco_active">इको मोड चालू</string>
+    
+    <!-- Streaming -->
+    <string name="btn_go_live">लाइव शुरू करें</string>
+    <string name="btn_stop_live">बंद करें</string>
+    
+    <!-- Camera -->
+    <string name="camera_zoom">ज़ूम</string>
+    <string name="camera_exposure">एक्सपोजर</string>
+    <string name="camera_iso">आईएसओ</string>
+</resources>

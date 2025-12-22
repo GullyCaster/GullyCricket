@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 GullyCaster Project
+  ~ Licensed under GPLv3. Developed for the Cricket Community of South Asia.
+  ~ Urdu (اردو) - Right-to-Left language
+  -->
+<resources>
+    <!-- App Names -->
+    <string name="app_name">گلی کیم</string>
+    <string name="app_name_boss">گلی باس</string>
+    
+    <!-- Connection -->
+    <string name="btn_connect">امپائر سے جڑیں</string>
+    <string name="btn_disconnect">منقطع کریں</string>
+    <string name="btn_start_hotspot">ہاٹ سپاٹ شروع کریں</string>
+    <string name="btn_stop_hotspot">ہاٹ سپاٹ بند کریں</string>
+    
+    <!-- Status -->
+    <string name="status_live">براہ راست</string>
+    <string name="status_connecting">جڑ رہا ہے…</string>
+    <string name="status_connected">جڑ گیا</string>
+    <string name="status_disconnected">منقطع</string>
+    <string name="status_streaming">سٹریمنگ</string>
+    
+    <!-- Scoring -->
+    <string name="score_runs">رنز</string>
+    <string name="score_wickets">وکٹیں</string>
+    <string name="score_overs">اوورز</string>
+    <string name="btn_wide">وائیڈ</string>
+    <string name="btn_out">آؤٹ</string>
+    <string name="btn_no_ball">نو بال</string>
+    <string name="btn_undo">واپس</string>
+    
+    <!-- Modes -->
+    <string name="mode_eco">بیٹری سیور</string>
+    <string name="mode_eco_active">ایکو موڈ فعال</string>
+    
+    <!-- Streaming -->
+    <string name="btn_go_live">براہ راست شروع</string>
+    <string name="btn_stop_live">بند کریں</string>
+    
+    <!-- Camera -->
+    <string name="camera_zoom">زوم</string>
+    <string name="camera_exposure">ایکسپوژر</string>
+    <string name="camera_iso">آئی ایس او</string>
+</resources>
