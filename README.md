@@ -95,7 +95,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 ## 📄 License
 
 ```
-Copyright (C) 2024 GullyCaster Project
+Copyright (C) 2025 GullyCaster Project
 Licensed under GNU General Public License v3.0 (GPLv3)
 Developed for the Cricket Community of South Asia.
 ```
@@ -104,4 +104,4 @@ See [LICENSE](LICENSE) for the full license text.
 
 ---
 
-**Made with ❤️ for gully cricket enthusiasts everywhere, For Good by Ikram Rasheed** 🏏
+**Made with ❤️ for gully cricket enthusiasts everywhere, by [Ikram Rasheed](https://www.ikramrasheed.com?utm=gullyCricket) and Hamza Mehboob** 🏏
