@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 GullyCaster Project
+  ~ Licensed under GPLv3. Developed for the Cricket Community of South Asia.
+  ~ Hindi (हिंदी)
+  -->
 <resources>
     <string name="app_name">गली बॉस</string>
+    
+    <!-- Connection -->
+    <string name="btn_start_hotspot">हॉटस्पॉट शुरू करें</string>
+    <string name="btn_stop_hotspot">हॉटस्पॉट बंद करें</string>
+    <string name="status_disconnected">डिस्कनेक्टेड</string>
+    <string name="status_connected">कनेक्टेड</string>
+    
+    <!-- Streaming -->
+    <string name="btn_go_live">लाइव शुरू</string>
+    <string name="btn_stop_live">बंद करें</string>
+    
+    <!-- Scoring -->
+    <string name="btn_wide">वाइड</string>
+    <string name="btn_out">आउट</string>
+    <string name="btn_no_ball">नो बॉल</string>
+    <string name="btn_undo">वापस</string>
 </resources>

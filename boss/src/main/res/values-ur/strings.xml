@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 GullyCaster Project
+  ~ Licensed under GPLv3. Developed for the Cricket Community of South Asia.
+  ~ Urdu (اردو) - Right-to-Left language
+  -->
 <resources>
     <string name="app_name">گلی باس</string>
+    
+    <!-- Connection -->
+    <string name="btn_start_hotspot">ہاٹ سپاٹ شروع کریں</string>
+    <string name="btn_stop_hotspot">ہاٹ سپاٹ بند کریں</string>
+    <string name="status_disconnected">منقطع</string>
+    <string name="status_connected">جڑ گیا</string>
+    
+    <!-- Streaming -->
+    <string name="btn_go_live">براہ راست شروع</string>
+    <string name="btn_stop_live">بند کریں</string>
+    
+    <!-- Scoring -->
+    <string name="btn_wide">وائیڈ</string>
+    <string name="btn_out">آؤٹ</string>
+    <string name="btn_no_ball">نو بال</string>
+    <string name="btn_undo">واپس</string>
 </resources>

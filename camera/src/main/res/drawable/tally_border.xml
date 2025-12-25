@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 GullyCaster Project
+  ~ Tally light red border for LIVE indicator
+  -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke
+        android:width="6dp"
+        android:color="#FF0000" />
+    <solid android:color="@android:color/transparent" />
+</shape>

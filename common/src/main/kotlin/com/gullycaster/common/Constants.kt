@@ -28,4 +28,8 @@ object Constants {
     // Retry intervals
     const val RECONNECT_INTERVAL_MS = 1000L
     const val MAX_RECONNECT_ATTEMPTS = 30
+    
+    // NSD (Network Service Discovery) for mDNS/Bonjour
+    const val NSD_SERVICE_TYPE = "_gullycaster._tcp."
+    const val NSD_SERVICE_NAME = "GullyCaster"
 }

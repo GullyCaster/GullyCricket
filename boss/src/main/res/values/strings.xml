@@ -15,4 +15,6 @@
     <!-- Scoring -->
     <string name="btn_wide">Wide</string>
     <string name="btn_out">OUT</string>
+    <string name="btn_no_ball">No Ball</string>
+    <string name="btn_undo">Undo</string>
 </resources>
