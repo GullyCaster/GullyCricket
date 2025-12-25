@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -57,4 +58,9 @@ dependencies {
     
     // NanoHTTPD for scoreboard web server
     implementation(libs.nanohttpd)
+    
+    // Media3 ExoPlayer for video playback
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.exoplayer.rtsp)
+    implementation(libs.media3.ui)
 }

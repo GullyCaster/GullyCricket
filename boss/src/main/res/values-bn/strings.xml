@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 GullyCaster Project
+  ~ Licensed under GPLv3. Developed for the Cricket Community of South Asia.
+  ~ Bangla (বাংলা)
+  -->
 <resources>
     <string name="app_name">গলি বস</string>
+    
+    <!-- Connection -->
+    <string name="btn_start_hotspot">হটস্পট চালু করুন</string>
+    <string name="btn_stop_hotspot">হটস্পট বন্ধ করুন</string>
+    <string name="status_disconnected">সংযোগ বিচ্ছিন্ন</string>
+    <string name="status_connected">সংযুক্ত</string>
+    
+    <!-- Streaming -->
+    <string name="btn_go_live">লাইভ শুরু</string>
+    <string name="btn_stop_live">বন্ধ করুন</string>
+    
+    <!-- Scoring -->
+    <string name="btn_wide">ওয়াইড</string>
+    <string name="btn_out">আউট</string>
+    <string name="btn_no_ball">নো বল</string>
+    <string name="btn_undo">পূর্বাবস্থা</string>
 </resources>

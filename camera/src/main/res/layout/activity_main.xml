@@ -14,11 +14,12 @@
     android:background="@android:color/black"
     tools:context=".MainActivity">
 
-    <!-- Camera Preview Surface -->
+    <!-- Camera Preview Surface with 16:9 aspect ratio centered -->
     <com.pedro.library.view.OpenGlView
         android:id="@+id/surfaceView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,12 +30,12 @@
         android:id="@+id/tallyBorder"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/tally_border"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/surfaceView"
+        app:layout_constraintEnd_toEndOf="@id/surfaceView"
+        app:layout_constraintStart_toStartOf="@id/surfaceView"
+        app:layout_constraintTop_toTopOf="@id/surfaceView" />
 
     <!-- Status Indicator -->
     <TextView
