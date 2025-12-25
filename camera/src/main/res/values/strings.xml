@@ -19,6 +19,7 @@
     <string name="status_connecting">Connecting…</string>
     <string name="status_connected">Connected</string>
     <string name="status_disconnected">Disconnected</string>
+    <string name="status_searching">Searching for GullyBoss…</string>
     <string name="status_streaming">Streaming</string>
     
     <!-- Scoring -->

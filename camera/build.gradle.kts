@@ -46,12 +46,16 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.runtime)
     
-    // RootEncoder for RTMP/SRT streaming
+    // RTSP Server for Boss connection
     implementation(libs.rootencoder.library)
+    implementation(libs.rtsp.server) {
+        exclude(group = "com.github.pedroSG94.rtmp-rtsp-stream-client-java")
+    }
 }
