@@ -104,4 +104,4 @@ See [LICENSE](LICENSE) for the full license text.
 
 ---
 
-**Made with ❤️ for gully cricket enthusiasts everywhere, by [Ikram Rasheed](https://www.ikramrasheed.com?utm=gullyCricket) and Hamza Mehboob** 🏏
+**Made with ❤️ for gully cricket enthusiasts everywhere, by [Ikram Rasheed](https://www.ikramrasheed.com?utm=gullyCricket) and [Hamza Mehboob](https://hamza-mehboob.vercel.app/)** 🏏
