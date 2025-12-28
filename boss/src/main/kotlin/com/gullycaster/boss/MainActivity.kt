@@ -122,12 +122,20 @@ class MainActivity : AppCompatActivity() {
         binding.btnOut.setOnClickListener { addWicket() }
         binding.btnUndo.setOnClickListener { undoLastAction() }
         
+        // Refresh Cameras button
+        binding.btnRefreshCameras.setOnClickListener {
+            startCameraDiscovery()
+        }
+        
         // Go Live button
         binding.btnGoLive.setOnClickListener {
             showToast("RTMP uplink not yet implemented")
         }
         
         updateScoreDisplay()
+        
+        // Auto-start discovery if on a network
+        startCameraDiscovery()
     }
 
     private fun setupCameraGrid() {
@@ -218,7 +226,7 @@ class MainActivity : AppCompatActivity() {
                     // Start discovering cameras
                     startCameraDiscovery()
                     
-                    showToast("Hotspot started! Searching for cameras...")
+                    showToast("Hotspot active! Finding cameras...")
                 }
             }
 
@@ -251,18 +259,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun startCameraDiscovery() {
         cameraDiscovery.startDiscovery(object : CameraDiscovery.DiscoveryCallback {
+            override fun onDiscoveryStarted() {
+                runOnUiThread {
+                    showToast("Searching for cameras...")
+                }
+            }
+
             override fun onCameraFound(name: String, host: java.net.InetAddress, port: Int) {
                 runOnUiThread {
-                    val rtspUrl = "rtsp://${host.hostAddress}:$port"
+                    val rtspUrl = "rtsp://${host.hostAddress}:$port/live"
                     pendingCameras.add(Pair(name, rtspUrl))
-                    showToast("Camera found: $name\nLong-press a slot to connect")
+                    showToast("Camera found: $name")
                     
                     // Auto-connect to first available slot
                     for (i in 0..3) {
                         if (!cameraFeedPlayer.isSlotActive(i)) {
                             val (camName, url) = pendingCameras.removeAt(0)
                             cameraFeedPlayer.connectCamera(i, url, cameraSurfaces[i])
-                            showToast("Auto-connected $camName to slot ${i + 1}")
+                            showToast("Auto-connected to $camName")
                             break
                         }
                     }
@@ -272,13 +286,13 @@ class MainActivity : AppCompatActivity() {
             override fun onCameraLost(name: String) {
                 runOnUiThread {
                     pendingCameras.removeAll { it.first == name }
-                    showToast("Camera lost: $name")
+                    showToast("Camera offline: $name")
                 }
             }
 
             override fun onDiscoveryError(errorCode: Int) {
                 runOnUiThread {
-                    showToast("Camera discovery error: $errorCode")
+                    showToast("Discovery error: $errorCode")
                 }
             }
         })

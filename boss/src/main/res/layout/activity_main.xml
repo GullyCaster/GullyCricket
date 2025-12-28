@@ -32,8 +32,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="#333333" />
+            android:layout_margin="4dp" />
 
         <SurfaceView
             android:id="@+id/camera2"
@@ -41,8 +40,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="#333333" />
+            android:layout_margin="4dp" />
 
         <SurfaceView
             android:id="@+id/camera3"
@@ -50,8 +48,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="#333333" />
+            android:layout_margin="4dp" />
 
         <SurfaceView
             android:id="@+id/camera4"
@@ -59,8 +56,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="#333333" />
+            android:layout_margin="4dp" />
 
     </GridLayout>
 
@@ -216,6 +212,14 @@
             android:layout_weight="1"
             android:text="@string/status_disconnected"
             android:textColor="#aaaaaa" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRefreshCameras"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Find Cameras" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGoLive"

@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity(), ConnectChecker, SurfaceHolder.Callback
     private fun startCameraPreview() {
         try {
             if (rtspServer?.isStreaming == false && rtspServer?.isOnPreview == false) {
-                rtspServer?.startPreview(CameraHelper.Facing.BACK, 1280, 720)
+                rtspServer?.startPreview(CameraHelper.Facing.BACK, 640, 480)
             }
         } catch (e: Exception) {
             showToast("Error starting preview: ${e.message}")
@@ -132,14 +132,14 @@ class MainActivity : AppCompatActivity(), ConnectChecker, SurfaceHolder.Callback
         try {
             // prepareVideo overload: (width, height, fps, bitrate, hardwareRotation, rotation)
             if (rtspServer?.prepareAudio() == true && 
-                rtspServer?.prepareVideo(1280, 720, 30, 2500 * 1024, 0) == true) {
+                rtspServer?.prepareVideo(640, 480, 20, 800 * 1024, 0) == true) {
                 
-                rtspServer?.startStream("")
+                rtspServer?.startStream("live")
                 cameraAdvertiser.registerCamera(cameraId, RTSP_PORT)
                 binding.btnConnect.text = "Stop Server"
                 binding.tallyBorder.visibility = View.VISIBLE
                 updateStatus()
-                showToast("RTSP Server started!")
+                showToast("Stream Server Active & Broadcasting")
             } else {
                 showToast("Error preparing stream")
             }
@@ -162,9 +162,9 @@ class MainActivity : AppCompatActivity(), ConnectChecker, SurfaceHolder.Callback
     private fun updateStatus() {
         val ip = getLocalIpAddress()
         if (rtspServer?.isStreaming == true) {
-            binding.statusText.text = "RTSP: rtsp://$ip:$RTSP_PORT\nClients: $connectedClients"
+            binding.statusText.text = "RTSP Server Active\nrtsp://$ip:$RTSP_PORT\nClients: $connectedClients"
         } else {
-            binding.statusText.text = "Ready to start\nIP: $ip"
+            binding.statusText.text = "Ready to start\nHotspot IP: $ip"
         }
     }
 

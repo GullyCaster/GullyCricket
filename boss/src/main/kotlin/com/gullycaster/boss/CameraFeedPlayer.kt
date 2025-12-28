@@ -58,10 +58,25 @@ class CameraFeedPlayer(private val context: Context) {
         // Release existing player if any
         disconnectCamera(slot)
 
-        val player = ExoPlayer.Builder(context).build().apply {
-            // Create RTSP media source
+        val loadControl = androidx.media3.exoplayer.DefaultLoadControl.Builder()
+            .setBufferDurationsMs(
+                1000, // Min buffer (increased for stability)
+                3000, // Max buffer
+                500,  // Buffer for playback
+                1000  // Buffer for playback after rebuffer
+            )
+            .setBackBuffer(0, false) // Don't keep any back buffer
+            .build()
+
+        val player = ExoPlayer.Builder(context)
+            .setLoadControl(loadControl)
+            .build().apply {
+            // Create RTSP media source forcing TCP for reliability
             val mediaItem = MediaItem.fromUri(rtspUrl)
             val rtspMediaSource = RtspMediaSource.Factory()
+                .setForceUseRtpTcp(true)
+                .setDebugLoggingEnabled(true)
+                .setTimeoutMs(5000) // 5 seconds timeout
                 .createMediaSource(mediaItem)
 
             setMediaSource(rtspMediaSource)
@@ -69,7 +84,10 @@ class CameraFeedPlayer(private val context: Context) {
             
             addListener(object : Player.Listener {
                 override fun onPlayerError(error: PlaybackException) {
-                    Log.e(TAG, "Player error on slot $slot: ${error.message}")
+                    Log.e(TAG, "Player error on slot $slot: ${error.errorCodeName} - ${error.message}")
+                    android.os.Handler(android.os.Looper.getMainLooper()).post {
+                        android.widget.Toast.makeText(context, "Slot $slot Feed Error: ${error.message}", android.widget.Toast.LENGTH_SHORT).show()
+                    }
                 }
 
                 override fun onPlaybackStateChanged(playbackState: Int) {

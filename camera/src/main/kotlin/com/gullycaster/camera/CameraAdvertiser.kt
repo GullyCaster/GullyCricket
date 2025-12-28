@@ -19,13 +19,14 @@ class CameraAdvertiser(private val context: Context) {
 
     companion object {
         private const val TAG = "CameraAdvertiser"
-        const val SERVICE_TYPE = "_gullycam._tcp."
+        const val SERVICE_TYPE = "_gullycam._tcp"
     }
 
     private var nsdManager: NsdManager? = null
     private var registrationListener: NsdManager.RegistrationListener? = null
     private var isRegistered = false
     private var registeredName: String? = null
+    private var multicastLock: android.net.wifi.WifiManager.MulticastLock? = null
 
     /**
      * Register this camera for discovery.
@@ -40,6 +41,11 @@ class CameraAdvertiser(private val context: Context) {
         }
 
         nsdManager = context.getSystemService(Context.NSD_SERVICE) as NsdManager
+        val wifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+        multicastLock = wifiManager.createMulticastLock("cameraAdvertisingLock").apply {
+            setReferenceCounted(true)
+            acquire()
+        }
 
         val serviceInfo = NsdServiceInfo().apply {
             serviceName = "GullyCam-$cameraId"
@@ -52,11 +58,13 @@ class CameraAdvertiser(private val context: Context) {
                 registeredName = serviceInfo.serviceName
                 Log.d(TAG, "Camera registered: $registeredName on port $port")
                 isRegistered = true
+                showToast("Camera broadcast active: $registeredName")
             }
 
             override fun onRegistrationFailed(serviceInfo: NsdServiceInfo, errorCode: Int) {
                 Log.e(TAG, "Registration failed: error=$errorCode")
                 isRegistered = false
+                showToast("Camera broadcast failed!")
             }
 
             override fun onServiceUnregistered(serviceInfo: NsdServiceInfo) {
@@ -94,8 +102,23 @@ class CameraAdvertiser(private val context: Context) {
         } catch (e: Exception) {
             Log.e(TAG, "Failed to unregister camera", e)
         }
+        
+        try {
+            if (multicastLock?.isHeld == true) {
+                multicastLock?.release()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to release multicast lock", e)
+        }
+        multicastLock = null
     }
 
     fun isRegistered(): Boolean = isRegistered
     fun getRegisteredName(): String? = registeredName
+
+    private fun showToast(msg: String) {
+        android.os.Handler(android.os.Looper.getMainLooper()).post {
+            android.widget.Toast.makeText(context, msg, android.widget.Toast.LENGTH_SHORT).show()
+        }
+    }
 }

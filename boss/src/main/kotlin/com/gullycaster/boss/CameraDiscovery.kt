@@ -19,19 +19,21 @@ class CameraDiscovery(private val context: Context) {
 
     companion object {
         private const val TAG = "CameraDiscovery"
-        const val SERVICE_TYPE = "_gullycam._tcp."
+        const val SERVICE_TYPE = "_gullycam._tcp"
     }
 
     interface DiscoveryCallback {
         fun onCameraFound(name: String, host: InetAddress, port: Int)
         fun onCameraLost(name: String)
         fun onDiscoveryError(errorCode: Int)
+        fun onDiscoveryStarted()
     }
 
     private var nsdManager: NsdManager? = null
     private var discoveryListener: NsdManager.DiscoveryListener? = null
     private var isDiscovering = false
     private var callback: DiscoveryCallback? = null
+    private var multicastLock: android.net.wifi.WifiManager.MulticastLock? = null
     
     // Track discovered cameras
     private val discoveredCameras = mutableMapOf<String, Pair<InetAddress, Int>>()
@@ -47,11 +49,17 @@ class CameraDiscovery(private val context: Context) {
 
         this.callback = callback
         nsdManager = context.getSystemService(Context.NSD_SERVICE) as NsdManager
+        val wifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+        multicastLock = wifiManager.createMulticastLock("cameraDiscoveryLock").apply {
+            setReferenceCounted(true)
+            acquire()
+        }
 
         discoveryListener = object : NsdManager.DiscoveryListener {
             override fun onDiscoveryStarted(serviceType: String) {
                 Log.d(TAG, "Discovery started for $serviceType")
                 isDiscovering = true
+                callback.onDiscoveryStarted()
             }
 
             override fun onDiscoveryStopped(serviceType: String) {
@@ -98,6 +106,8 @@ class CameraDiscovery(private val context: Context) {
         val resolveListener = object : NsdManager.ResolveListener {
             override fun onResolveFailed(serviceInfo: NsdServiceInfo, errorCode: Int) {
                 Log.e(TAG, "Resolve failed for ${serviceInfo.serviceName}: error=$errorCode")
+                // On some devices, resolve fails with error 3 (timeout) if multiple requests are made.
+                // We could retry here, but usually it means the device is unreachable.
             }
 
             override fun onServiceResolved(serviceInfo: NsdServiceInfo) {
@@ -127,6 +137,16 @@ class CameraDiscovery(private val context: Context) {
         } catch (e: Exception) {
             Log.e(TAG, "Failed to stop discovery", e)
         }
+        
+        try {
+            if (multicastLock?.isHeld == true) {
+                multicastLock?.release()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to release multicast lock", e)
+        }
+        multicastLock = null
+        
         isDiscovering = false
         discoveredCameras.clear()
     }
